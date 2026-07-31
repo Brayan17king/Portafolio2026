@@ -1,12 +1,10 @@
 import videoQuibbo from "../../../assets/videos/quibbo.mp4";
-
 import quibbo0 from "../../../assets/images/projects/quibbo/quibbo-0.webp";
 import quibbo1 from "../../../assets/images/projects/quibbo/quibbo-1.webp";
 import quibbo2 from "../../../assets/images/projects/quibbo/quibbo-2.webp";
 import quibbo3 from "../../../assets/images/projects/quibbo/quibbo-3.webp";
 import quibbo4 from "../../../assets/images/projects/quibbo/quibbo-4.webp";
 import quibbo5 from "../../../assets/images/projects/quibbo/quibbo-5.webp";
-
 import type { ProjectContent } from "../../types";
 
 export default {
@@ -15,14 +13,14 @@ export default {
   tags: ["three", "node", "kubernetes", "redis", "postgresql"],
   videoBorder: true,
   description:
-    "Quibbo ist eine Plattform für schnelle, rundenbasierte Multiplayer-Spiele. Sie verbindet Matchmaking, anpassbare 3D-Avatare und Account-Integration mit einem Rangsystem auf ELO-Basis.<br/><br/>Das Projekt begann als technisches Experiment und entwickelte sich zu einem skalierbaren System, um neue Spielideen auszuprobieren.",
+    "Quibbo es una plataforma para juegos multijugador rápidos por rondas. Combina matchmaking, avatares 3D personalizables e integración de cuentas con un sistema de recompensas por ranking.<br/><br/>El proyecto comenzó como un experimento técnico y se convirtió en un sistema escalable para probar nuevas ideas de juego.",
   components: [
     {
       type: "media",
       props: {
         type: "video",
         src: videoQuibbo,
-        caption: "Benutzeroberfläche",
+        caption: "Experiencia de usuario",
       },
     },
     {
@@ -30,8 +28,8 @@ export default {
       props: {
         type: "image",
         src: quibbo0,
-        alt: "Avatar Ersteller",
-        caption: "Avatar Ersteller",
+        alt: "Creador de avatares",
+        caption: "Creador de avatares",
       },
     },
     {
@@ -39,8 +37,8 @@ export default {
       props: {
         type: "image",
         src: quibbo1,
-        alt: "Mehrspieler Tic-Tac-Toe",
-        caption: "Mehrspieler Tic-Tac-Toe",
+        alt: "Tres en línea multijugador",
+        caption: "Tres en línea multijugador",
       },
     },
     {
@@ -48,8 +46,8 @@ export default {
       props: {
         type: "image",
         src: quibbo2,
-        alt: "Verschiedene Minispiele",
-        caption: "Verschiedene Minispiele",
+        alt: "Múltiples minijuegos",
+        caption: "Múltiples minijuegos",
       },
     },
     {
@@ -57,8 +55,8 @@ export default {
       props: {
         type: "image",
         src: quibbo3,
-        alt: "Avatar Variationen",
-        caption: "Avatar Variationen",
+        alt: "Variaciones de avatar",
+        caption: "Variaciones de avatar",
       },
     },
     {
@@ -66,8 +64,8 @@ export default {
       props: {
         type: "image",
         src: quibbo4,
-        alt: "Responsives Design",
-        caption: "Responsives Design",
+        alt: "Diseño responsivo",
+        caption: "Diseño responsivo",
       },
     },
     {
@@ -75,8 +73,8 @@ export default {
       props: {
         type: "image",
         src: quibbo5,
-        alt: "Dunkles Design",
-        caption: "Dunkles Design",
+        alt: "Modo oscuro",
+        caption: "Modo oscuro",
       },
     },
   ],

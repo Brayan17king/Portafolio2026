@@ -1,12 +1,10 @@
 import videoCubeWar from "../../../assets/videos/cubewar.mp4";
-
 import cubewar0 from "../../../assets/images/projects/cubewar/cubewar-0.webp";
 import cubewar1 from "../../../assets/images/projects/cubewar/cubewar-1.webp";
 import cubewar2 from "../../../assets/images/projects/cubewar/cubewar-2.webp";
 import cubewar3 from "../../../assets/images/projects/cubewar/cubewar-3.webp";
 import cubewar4 from "../../../assets/images/projects/cubewar/cubewar-4.webp";
 import cubewar5 from "../../../assets/images/projects/cubewar/cubewar-5.webp";
-
 import type { ProjectContent } from "../../types";
 
 export default {
@@ -16,7 +14,7 @@ export default {
   videoBorder: false,
   live: "https://cubewar.io",
   description:
-    "CubeWar ist ein browserbasiertes Multiplayer-Spiel, in dem Spieler in schnellen, strategischen Kämpfen gegeneinander antreten.<br/><br/>Ich habe den gesamten Stack selbst entwickelt, inklusive der Spiel-Engine, des Client-Timeline-Systems und des Echtzeit-Netzwerks mit Redis-basiertem Matchmaking für flüssiges Gameplay.",
+    "CubeWar es un juego multijugador en el navegador donde los jugadores controlan avatares cúbicos en batallas estratégicas de ritmo rápido.<br/><br/>Construí todo el stack desde cero, incluyendo el motor del juego, el sistema de línea de tiempo del lado del cliente, y la red en tiempo real con matchmaking basado en Redis para un gameplay fluido y de alta concurrencia.",
   components: [
     {
       type: "media",
@@ -40,8 +38,8 @@ export default {
       props: {
         type: "image",
         src: cubewar1,
-        alt: "Karten Themen",
-        caption: "Karten Themen",
+        alt: "Temáticas de mapas",
+        caption: "Temáticas de mapas",
       },
     },
     {
@@ -49,8 +47,8 @@ export default {
       props: {
         type: "image",
         src: cubewar2,
-        alt: "Authentifizierung",
-        caption: "Authentifizierung",
+        alt: "Autenticación",
+        caption: "Autenticación",
       },
     },
     {
@@ -58,8 +56,8 @@ export default {
       props: {
         type: "image",
         src: cubewar3,
-        alt: "Responsives Design",
-        caption: "Responsives Design",
+        alt: "Diseño responsivo",
+        caption: "Diseño responsivo",
       },
     },
     {
@@ -67,8 +65,8 @@ export default {
       props: {
         type: "image",
         src: cubewar4,
-        alt: "Mehrere Spielmodi",
-        caption: "Mehrere Spielmodi",
+        alt: "Múltiples modos de juego",
+        caption: "Múltiples modos de juego",
       },
     },
     {
@@ -76,8 +74,8 @@ export default {
       props: {
         type: "image",
         src: cubewar5,
-        alt: "Party-System",
-        caption: "Party-System",
+        alt: "Sistema de grupos",
+        caption: "Sistema de grupos",
       },
     },
   ],

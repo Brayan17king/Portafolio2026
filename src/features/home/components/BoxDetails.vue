@@ -7,6 +7,8 @@ import { BREAKPOINTS } from "../../../utils/sizes";
 import { Vector3 } from "three";
 import PinIcon from "../../../components/icons/Pin.vue";
 import ProjectedElement from "../../../components/ProjectedElement.vue";
+import ColombiaMap from "../../../components/ColombiaMap.vue";
+import { profile } from "../../../content/profile";
 
 const point = new Vector3(-0.76, 3.6, 6.75);
 
@@ -22,13 +24,11 @@ watchEffect((onInvalidate) => {
   const wrapperEl = wrapperRef.value;
   if (!wrapperEl) return;
 
-  // Clean up previous matchMedia
   if (matchMedia) {
     matchMedia.revert();
     matchMedia = null;
   }
 
-  // Initialize GSAP matchMedia
   matchMedia = gsap.matchMedia();
 
   matchMedia.add(
@@ -41,11 +41,8 @@ watchEffect((onInvalidate) => {
       const { conditions } = context;
       const { isLandscape } = conditions as { isMobile: boolean; isDesktop: boolean; isLandscape: boolean };
 
-      const tl = gsap.timeline({
-        paused: true,
-      });
+      const tl = gsap.timeline({ paused: true });
 
-      // Only animate clipPath on landscape (animations disabled on portrait)
       if (isLandscape) {
         tl.fromTo(
           wrapperEl,
@@ -54,11 +51,9 @@ watchEffect((onInvalidate) => {
           0,
         );
       } else {
-        // On portrait, set clipPath immediately without animation
         gsap.set(wrapperEl, { clipPath: "inset(0% 0% 0% 0%)" });
       }
 
-      // Only add timeline animations on landscape
       if (isLandscape) {
         for (let i = 0; i < timelines.value.length; i++) {
           const item = timelines.value[i];
@@ -71,7 +66,6 @@ watchEffect((onInvalidate) => {
 
       emit("timeline:created", tl);
 
-      // Return cleanup function
       return () => {
         tl.kill();
       };
@@ -87,9 +81,7 @@ watchEffect((onInvalidate) => {
 });
 
 onBeforeUnmount(() => {
-  if (matchMedia) {
-    matchMedia.revert();
-  }
+  if (matchMedia) matchMedia.revert();
 });
 
 const handleTimelineCreated = (timeline: gsap.core.Timeline, delay: number) => {
@@ -104,7 +96,7 @@ const handleTimelineCreated = (timeline: gsap.core.Timeline, delay: number) => {
       <div class="box-details-content">
         <div class="box-details-title">
           <AppearingText
-            text="David"
+            :text="profile.fullName"
             :steps="1"
             :duration="0.35"
             @timeline:created="(tl: gsap.core.Timeline) => handleTimelineCreated(tl, 0)"
@@ -117,12 +109,13 @@ const handleTimelineCreated = (timeline: gsap.core.Timeline, delay: number) => {
               v-if="t('germany')"
               class="box-details-content-copy"
               :text="t('germany')"
-              :steps="3"
+              :steps="1"
               :duration="0.35"
               @timeline:created="(tl: gsap.core.Timeline) => handleTimelineCreated(tl, 0.1)"
             />
           </div>
         </div>
+        <ColombiaMap />
       </div>
     </div>
   </ProjectedElement>
@@ -160,8 +153,7 @@ const handleTimelineCreated = (timeline: gsap.core.Timeline, delay: number) => {
   &::after {
     content: "";
     position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
+    top: 20px;
     right: 0;
     width: 11px;
     height: 11px;
@@ -172,8 +164,7 @@ const handleTimelineCreated = (timeline: gsap.core.Timeline, delay: number) => {
   &::before {
     content: "";
     position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
+    top: 24px;
     right: 0;
     width: var(--line-length);
     height: 0;
@@ -186,15 +177,10 @@ const handleTimelineCreated = (timeline: gsap.core.Timeline, delay: number) => {
     background: linear-gradient(to bottom, var(--color-hologram-top) 0%, var(--color-hologram-bottom) 100%);
     gap: var(--space-xxs);
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    padding: var(--space-sm) var(--space-md);
-
-    @include mixins.landscape {
-      flex-direction: column;
-      justify-content: flex-start;
-      padding: var(--space-xs) var(--space-sm);
-    }
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: var(--space-xs) var(--space-sm);
+    overflow: hidden;
 
     @include mixins.mq("md") {
       padding: var(--space-sm) var(--space-md);
@@ -236,10 +222,6 @@ const handleTimelineCreated = (timeline: gsap.core.Timeline, delay: number) => {
 
     @include mixins.mq("md") {
       font-size: var(--font-size-md);
-    }
-
-    &-copy {
-      flex: 0.5;
     }
   }
 }

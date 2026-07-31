@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed } from "vue";
+import { computed, useAttrs } from "vue";
 
 export interface Props {
   renderAs?: "button" | "a" | "div";
@@ -8,6 +8,7 @@ export interface Props {
 }
 
 const props = defineProps<Props>();
+const attrs = useAttrs();
 
 const classes = computed(() => [
   "button-wrapper",
@@ -17,7 +18,7 @@ const classes = computed(() => [
 </script>
 
 <template>
-  <component :is="props.renderAs ?? 'button'" :class="classes">
+  <component :is="props.renderAs ?? 'button'" :class="classes" v-bind="attrs">
     <slot></slot>
   </component>
 </template>

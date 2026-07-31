@@ -1,11 +1,9 @@
 import videoSharkie from "../../../assets/videos/sharkie.mp4";
-
 import sharkie0 from "../../../assets/images/projects/sharkie/sharkie-0.webp";
 import sharkie1 from "../../../assets/images/projects/sharkie/sharkie-1.webp";
 import sharkie2 from "../../../assets/images/projects/sharkie/sharkie-2.webp";
 import sharkie3 from "../../../assets/images/projects/sharkie/sharkie-3.webp";
 import sharkie4 from "../../../assets/images/projects/sharkie/sharkie-4.webp";
-
 import type { ProjectContent } from "../../types";
 
 export default {
@@ -15,7 +13,7 @@ export default {
   live: "https://sharkie.david-hckh.com/",
   source: "https://github.com/davidhckh/sharkie-game",
   description:
-    "Sharkie ist ein 2D-Unterwasser-Abenteuerspiel, entwickelt mit Vanilla JavaScript und HTML5 Canvas.<br/><br/>Das Projekt basiert auf objektorientierten Programmierprinzipien und nutzt eigene Klassen für Spielfiguren, Gegner und Spielsysteme, ergänzt durch flüssige Animationen, Kampfsysteme und mehrschichtige Parallax-Hintergründe.",
+    "Sharkie es un juego de aventura submarina 2D construido con JavaScript puro y HTML5 Canvas.<br/><br/>El proyecto está estructurado siguiendo principios de programación orientada a objetos, con clases propias para entidades, enemigos y sistemas del juego, junto con animaciones fluidas, mecánicas de combate y fondos en parallax por capas.",
   components: [
     {
       type: "media",
@@ -30,8 +28,8 @@ export default {
       props: {
         type: "image",
         src: sharkie0,
-        alt: "Spielfiguren und Karten-Design",
-        caption: "Spielfiguren und Karten-Design",
+        alt: "Entidades y diseño de mapa",
+        caption: "Entidades y diseño de mapa",
       },
     },
     {
@@ -39,8 +37,8 @@ export default {
       props: {
         type: "image",
         src: sharkie1,
-        alt: "Boss-Kampf",
-        caption: "Boss-Kampf",
+        alt: "Combate contra jefe",
+        caption: "Combate contra jefe",
       },
     },
     {
@@ -48,8 +46,8 @@ export default {
       props: {
         type: "image",
         src: sharkie2,
-        alt: "Mission",
-        caption: "Mission",
+        alt: "Misión",
+        caption: "Misión",
       },
     },
     {
@@ -57,8 +55,8 @@ export default {
       props: {
         type: "image",
         src: sharkie3,
-        alt: "Sieg-Screen",
-        caption: "Sieg-Screen",
+        alt: "Pantalla de victoria",
+        caption: "Pantalla de victoria",
       },
     },
     {
@@ -66,8 +64,8 @@ export default {
       props: {
         type: "image",
         src: sharkie4,
-        alt: "Todes-Screen",
-        caption: "Todes-Screen",
+        alt: "Pantalla de derrota",
+        caption: "Pantalla de derrota",
       },
     },
   ],

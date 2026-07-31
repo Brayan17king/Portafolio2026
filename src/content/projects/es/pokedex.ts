@@ -1,28 +1,26 @@
 import videoPokedex from "../../../assets/videos/pokedex.mp4";
-
 import pokedex0 from "../../../assets/images/projects/pokedex/pokedex-0.webp";
 import pokedex1 from "../../../assets/images/projects/pokedex/pokedex-1.webp";
 import pokedex2 from "../../../assets/images/projects/pokedex/pokedex-2.webp";
 import pokedex3 from "../../../assets/images/projects/pokedex/pokedex-3.webp";
-
 import type { ProjectContent } from "../../types";
 
 export default {
   title: "Pokédex",
   theme: "light",
   tags: ["javascript", "html", "css"],
-  live: "https://pokedex.david-hckh.com/",
-  source: "https://github.com/davidhckh/pokedex",
+  live: "https://brayan17king.github.io/Pokedex/",
+  source: "https://github.com/Brayan17king/Pokedex",
   videoBorder: true,
   description:
-    "Eines meiner ersten Webprojekte, um Kernkonzepte der Webentwicklung zu üben. Der Pokédex ist Open Source, damit andere Entwickler auf dieselbe Weise lernen können wie ich.<br/><br/>Er interagiert außerdem mit einer öffentlichen API, um zusätzliche Erfahrung zu sammeln.",
+    "Uno de mis primeros proyectos web para practicar conceptos básicos de desarrollo web. La Pokédex es de código abierto para que otros desarrolladores puedan aprender de la misma manera en que yo lo hice.<br/><br/>También interactúa con una API pública, para ganar más experiencia con la obtención asíncrona de datos.",
   components: [
     {
       type: "media",
       props: {
         type: "video",
         src: videoPokedex,
-        caption: "Pokédex Anwendung",
+        caption: "Aplicación Pokédex",
       },
     },
     {
@@ -30,8 +28,8 @@ export default {
       props: {
         type: "image",
         src: pokedex0,
-        alt: "Standardansicht",
-        caption: "Standardansicht",
+        alt: "Vista predeterminada",
+        caption: "Vista predeterminada",
       },
     },
     {
@@ -39,8 +37,8 @@ export default {
       props: {
         type: "image",
         src: pokedex1,
-        alt: "Suchfunktion",
-        caption: "Suchfunktion",
+        alt: "Función de búsqueda",
+        caption: "Función de búsqueda",
       },
     },
     {
@@ -48,8 +46,8 @@ export default {
       props: {
         type: "image",
         src: pokedex2,
-        alt: "Responsives Design",
-        caption: "Responsives Design",
+        alt: "Diseño responsivo",
+        caption: "Diseño responsivo",
       },
     },
     {
@@ -57,8 +55,8 @@ export default {
       props: {
         type: "image",
         src: pokedex3,
-        alt: "Lazy-Loading",
-        caption: "Lazy-Loading",
+        alt: "Carga diferida",
+        caption: "Carga diferida",
       },
     },
   ],

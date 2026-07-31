@@ -9,6 +9,7 @@ import { locale } from "../i18n/store";
 import ButtonRound from "./ButtonRound.vue";
 import { lenis } from "../composables/useScroll";
 import ArrowRightLong from "./icons/ArrowRightLong.vue";
+import { profile } from "../content/profile";
 
 interface Props {
   withSocial?: boolean;
@@ -24,7 +25,7 @@ const showAttribution = import.meta.env.VITE_SHOW_ATTRIBUTION !== "false";
 </script>
 
 <template>
-  <footer class="footer">
+  <footer class="footer" aria-label="Site footer">
     <NotchSection class="footer-notch" />
     <div class="footer-content">
       <div
@@ -45,7 +46,7 @@ const showAttribution = import.meta.env.VITE_SHOW_ATTRIBUTION !== "false";
           <div class="footer-top-links-legal">
             <Clickable renderAs="div">
               <Link
-                :href="locale === 'de' ? '/de/privacy' : '/privacy'"
+                :href="locale === 'es' ? '/es/privacy.html' : '/privacy.html'"
                 class="footer-link"
                 :external="true"
                 data-cursor="circle-white"
@@ -56,7 +57,7 @@ const showAttribution = import.meta.env.VITE_SHOW_ATTRIBUTION !== "false";
             </Clickable>
             <Clickable renderAs="div">
               <Link
-                :href="locale === 'de' ? '/de/legal' : '/legal'"
+                :href="locale === 'es' ? '/es/legal.html' : '/legal.html'"
                 class="footer-link children-unclickable"
                 :external="true"
                 data-cursor="circle-white"
@@ -100,7 +101,7 @@ const showAttribution = import.meta.env.VITE_SHOW_ATTRIBUTION !== "false";
             >
           </Clickable>
         </div>
-        <p>© {{ new Date().getFullYear() }} David Heckhoff</p>
+        <p>© {{ new Date().getFullYear() }} {{ profile.fullName }}</p>
       </div>
     </div>
   </footer>

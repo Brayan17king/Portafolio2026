@@ -1,22 +1,22 @@
-<script setup>
-import Button from "../../../components/Button.vue";
+<script setup lang="ts">
 import Banner from "../../../components/Banner.vue";
 import { preloaderVisible } from "../../../composables/usePreloader";
 import { t } from "../../../i18n/utils/translate";
-import AppearingText from "../../../components/AppearingText.vue";
+import { profile } from "../../../content/profile";
 </script>
 
 <template>
-  <div class="hero">
+  <section class="hero" aria-labelledby="hero-title">
     <div class="hero-content grid">
       <div class="hero-content-inner" id="hero-content-inner">
         <div class="hero-content-copys">
-          <h1 class="hero-title">David<br />Heckhoff</h1>
+          <p class="hero-label">{{ profile.role }}</p>
+          <h1 id="hero-title" class="hero-title">{{ profile.firstName }}<br />{{ profile.lastName }}</h1>
           <Banner class="hero-banner" :copy="t('job-title')" v-if="!preloaderVisible" animated />
         </div>
       </div>
     </div>
-  </div>
+  </section>
 </template>
 
 <style scoped lang="scss">
@@ -79,6 +79,14 @@ import AppearingText from "../../../components/AppearingText.vue";
     &-button {
       width: fit-content;
     }
+  }
+
+  &-label {
+    font-size: var(--font-size-sm);
+    font-weight: 700;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    opacity: 0.8;
   }
 
   &-title {

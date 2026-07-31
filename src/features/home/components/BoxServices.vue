@@ -1,18 +1,16 @@
 <script setup lang="ts">
-import { computed, ref, watchEffect, onBeforeUnmount } from "vue";
+import { computed, onBeforeUnmount, ref, watchEffect } from "vue";
 import gsap from "gsap";
 import { locale } from "../../../i18n/store";
 import { t } from "../../../i18n/utils/translate";
-import AppearingText from "../../../components/AppearingText.vue";
 import { BREAKPOINTS } from "../../../utils/sizes";
 import { Vector3 } from "three";
 import ProjectedElement from "../../../components/ProjectedElement.vue";
+import TechIcon from "../../../components/icons/TechIcon.vue";
 
 const point = new Vector3(0.75, 2.75, 6.75);
 
 const wrapperRef = ref<HTMLDivElement | null>(null);
-const timelines = ref<{ timeline: gsap.core.Timeline; delay: number }[]>([]);
-const subRefs = ref<HTMLParagraphElement[]>([]);
 let matchMedia: gsap.MatchMedia | null = null;
 
 const emit = defineEmits<{
@@ -39,11 +37,8 @@ watchEffect((onInvalidate) => {
       const { conditions } = context;
       const { isMobile } = conditions as { isMobile: boolean; isDesktop: boolean };
 
-      const tl = gsap.timeline({
-        paused: true,
-      });
+      const tl = gsap.timeline({ paused: true });
 
-      // Only animate clipPath on desktop
       if (!isMobile) {
         tl.fromTo(
           wrapperEl,
@@ -52,35 +47,11 @@ watchEffect((onInvalidate) => {
           0,
         );
       } else {
-        // On mobile, ensure clipPath is set to visible immediately
         gsap.set(wrapperEl, { clipPath: "inset(0% 0% 0% 0%)" });
-      }
-
-      for (let i = 0; i < timelines.value.length; i++) {
-        const item = timelines.value[i];
-        if (!item) continue;
-        tl.add(() => {
-          item.timeline.restart(true);
-        }, item.delay + 0.25);
-      }
-
-      // Only fade in on desktop
-      if (!isMobile && subRefs.value.length > 0) {
-        const subItems = subRefs.value.filter((ref) => ref !== null && ref !== undefined);
-        if (subItems.length > 0) {
-          tl.fromTo(subItems, { opacity: 0 }, { opacity: 1, duration: 0.2, stagger: 0.1 }, 0.3);
-        }
-      } else if (isMobile && subRefs.value.length > 0) {
-        // On mobile, ensure opacity is 1 immediately
-        const subItems = subRefs.value.filter((ref) => ref !== null && ref !== undefined);
-        if (subItems.length > 0) {
-          gsap.set(subItems, { opacity: 1 });
-        }
       }
 
       emit("timeline:created", tl);
 
-      // Return cleanup function
       return () => {
         tl.kill();
       };
@@ -101,29 +72,108 @@ onBeforeUnmount(() => {
   }
 });
 
-const handleTimelineCreated = (timeline: gsap.core.Timeline, delay: number) => {
-  const updatedTimelines = [...timelines.value, { timeline, delay }];
-  timelines.value = updatedTimelines;
-};
+interface TechItem {
+  name: string;
+  icon: string;
+}
 
-const SERVICES_EN = [
-  { name: "Three.js & WebGL" },
-  { name: "Node.js & WebSockets" },
-  { name: "React & Vue" },
-  { name: "Kubernetes & Redis" },
-  { name: "Real-time Multiplayer" },
-] as const satisfies { name: string }[];
+interface TechCategory {
+  category: string;
+  items: TechItem[];
+}
 
-const SERVICES_DE = [
-  { name: "Three.js & WebGL" },
-  { name: "Node.js & WebSockets" },
-  { name: "React & Vue" },
-  { name: "Kubernetes & Redis" },
-  { name: "Echtzeit-Mehrspieler" },
-] as const satisfies { name: string }[];
+const CATEGORIES_EN: TechCategory[] = [
+  {
+    category: "Frontend",
+    items: [
+      { name: "JavaScript", icon: "javascript" },
+      { name: "TypeScript", icon: "typescript" },
+      { name: "Vue", icon: "vuedotjs" },
+    ],
+  },
+  {
+    category: "Backend",
+    items: [
+      { name: "C#", icon: "csharp" },
+      { name: ".NET Core", icon: "dotnet" },
+      { name: "Node.js", icon: "nodedotjs" },
+      { name: "Python", icon: "python" },
+    ],
+  },
+  {
+    category: "Mobile",
+    items: [
+      { name: "Flutter", icon: "flutter" },
+      { name: "Dart", icon: "dart" },
+      { name: "Android Studio", icon: "androidstudio" },
+    ],
+  },
+  {
+    category: "Data",
+    items: [
+      { name: "SQL Server", icon: "sqlserver" },
+      { name: "PostgreSQL", icon: "postgresql" },
+      { name: "MongoDB", icon: "mongodb" },
+    ],
+  },
+  {
+    category: "DevOps",
+    items: [
+      { name: "Git", icon: "git" },
+      { name: "GitHub", icon: "github" },
+      { name: "GitLab", icon: "gitlab" },
+      { name: "Linux", icon: "linux" },
+    ],
+  },
+];
 
-const services = computed(() => {
-  return locale.value === "en" ? SERVICES_EN : SERVICES_DE;
+const CATEGORIES_ES: TechCategory[] = [
+  {
+    category: "Frontend",
+    items: [
+      { name: "JavaScript", icon: "javascript" },
+      { name: "TypeScript", icon: "typescript" },
+      { name: "Vue", icon: "vuedotjs" },
+    ],
+  },
+  {
+    category: "Backend",
+    items: [
+      { name: "C#", icon: "csharp" },
+      { name: ".NET Core", icon: "dotnet" },
+      { name: "Node.js", icon: "nodedotjs" },
+      { name: "Python", icon: "python" },
+    ],
+  },
+  {
+    category: "Móvil",
+    items: [
+      { name: "Flutter", icon: "flutter" },
+      { name: "Dart", icon: "dart" },
+      { name: "Android Studio", icon: "androidstudio" },
+    ],
+  },
+  {
+    category: "Datos",
+    items: [
+      { name: "SQL Server", icon: "sqlserver" },
+      { name: "PostgreSQL", icon: "postgresql" },
+      { name: "MongoDB", icon: "mongodb" },
+    ],
+  },
+  {
+    category: "DevOps",
+    items: [
+      { name: "Git", icon: "git" },
+      { name: "GitHub", icon: "github" },
+      { name: "GitLab", icon: "gitlab" },
+      { name: "Linux", icon: "linux" },
+    ],
+  },
+];
+
+const categories = computed(() => {
+  return locale.value === "en" ? CATEGORIES_EN : CATEGORIES_ES;
 });
 </script>
 
@@ -131,24 +181,26 @@ const services = computed(() => {
   <ProjectedElement :point="point">
     <div ref="wrapperRef" class="box-services">
       <div class="box-services-content">
-        <div class="box-services-title">
-          <AppearingText
-            :text="t('services')"
-            :steps="1"
-            :duration="0.35"
-            @timeline:created="(tl: gsap.core.Timeline) => handleTimelineCreated(tl, 0)"
-          />
-        </div>
-        <div class="box-services-list">
-          <div class="box-services-list-item" v-for="(service, index) in services" :key="service.name">
-            <p class="box-services-list-item-name">
-              <AppearingText
-                :text="service.name"
-                :steps="1"
-                :duration="0.35"
-                @timeline:created="(tl: gsap.core.Timeline) => handleTimelineCreated(tl, 0.15 + index * 0.1)"
-              />
-            </p>
+        <p class="box-services-title">{{ t('services') }}</p>
+        <div class="box-services-categories">
+          <div
+            class="box-services-category"
+            v-for="cat in categories"
+            :key="cat.category"
+          >
+            <p class="box-services-category-title">{{ cat.category }}</p>
+            <div class="box-services-category-grid">
+              <div
+                class="box-services-item"
+                v-for="item in cat.items"
+                :key="item.name"
+              >
+                <div class="box-services-item-icon">
+                  <TechIcon :name="item.icon" :size="16" />
+                </div>
+                <p class="box-services-item-name">{{ item.name }}</p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -177,7 +229,7 @@ const services = computed(() => {
   }
 
   @include mixins.landscape-large {
-    width: 380px;
+    width: 420px;
     max-width: calc(var(--svw) * 36);
   }
 
@@ -222,7 +274,7 @@ const services = computed(() => {
     background: linear-gradient(to bottom, var(--color-hologram-top) 0%, var(--color-hologram-bottom) 100%);
     display: flex;
     flex-direction: column;
-    gap: var(--space-sm);
+    gap: var(--space-xs);
     padding: var(--space-sm) var(--space-md);
 
     @include mixins.landscape {
@@ -234,45 +286,12 @@ const services = computed(() => {
     }
   }
 
-  &-list {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-xs);
-
-    &-item {
-      display: flex;
-      flex-direction: column;
-      padding-left: 18px;
-      position: relative;
-
-      &::before {
-        content: "";
-        position: absolute;
-        left: 2px;
-        top: 6px;
-        width: 4px;
-        height: 4px;
-        background-color: var(--color-text-cyan-400);
-        border-radius: 50%;
-      }
-
-      &-name {
-        font-size: var(--font-size-md);
-
-        @include mixins.landscape {
-          font-size: var(--font-size-sm);
-        }
-
-        @include mixins.landscape-large {
-          font-size: var(--font-size-lg);
-        }
-      }
-    }
-  }
-
   &-title {
-    font-size: var(--font-size-title-xs);
+    font-size: 11px;
     font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    opacity: 0.88;
 
     @include mixins.landscape {
       font-size: var(--font-size-title-xxs);
@@ -280,6 +299,84 @@ const services = computed(() => {
 
     @include mixins.landscape-large {
       font-size: var(--font-size-title-xs);
+    }
+  }
+
+  &-categories {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+  }
+
+  &-category {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+
+    &-title {
+      font-size: 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      opacity: 0.62;
+
+      @include mixins.mq("md") {
+        font-size: 11px;
+      }
+    }
+
+    &-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 4px;
+
+      @include mixins.mq("md") {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+    }
+  }
+
+  &-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    min-height: 56px;
+      background: rgba(255, 255, 255, 0.025);
+      border: 1px solid rgba(92, 224, 255, 0.12);
+    border-radius: 11px;
+    padding: 5px 4px 4px;
+    transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+
+    &:hover {
+      transform: translateY(-1px);
+        background: rgba(92, 224, 255, 0.06);
+        border-color: rgba(92, 224, 255, 0.18);
+    }
+
+    &-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 22px;
+      height: 22px;
+      border-radius: 8px;
+        background: rgba(92, 224, 255, 0.06);
+        border: 1px solid rgba(92, 224, 255, 0.1);
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+    }
+
+    &-name {
+      font-size: 8px;
+      line-height: 1.1;
+      text-align: center;
+      opacity: 0.82;
+      white-space: normal;
+      min-height: 2.2em;
+
+      @include mixins.mq("md") {
+        font-size: 11px;
+      }
     }
   }
 }

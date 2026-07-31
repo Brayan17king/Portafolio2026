@@ -6,13 +6,13 @@ import { t } from "../i18n/utils/translate";
 import { useHeaderTheme } from "../composables/useHeaderTheme";
 import { lenis } from "../composables/useScroll";
 import { projectId } from "../composables/useRouteObserver";
-import { social } from "../content/social";
 import ButtonRound from "./ButtonRound.vue";
 import ArrowRight from "./icons/ArrowRight.vue";
 import SoundsToggle from "./SoundsToggle.vue";
 import { isFeatureEnabled } from "../utils/features";
 import { useRouter } from "../composables/useRouter";
 import { useFirstRoute } from "../composables/useFirstRoute";
+import { profile } from "../content/profile";
 
 const router = useRouter();
 const { isFirstRoute } = useFirstRoute();
@@ -34,14 +34,14 @@ const { isDarkTheme } = useHeaderTheme({
 });
 
 const handleBackClick = () => {
-  // If it's the first route the user visited, navigate to home
-  // Otherwise, go back in browser history
   if (isFirstRoute.value) {
     router.push("/");
   } else {
     router.back();
   }
 };
+
+const contactHref = `mailto:${profile.email}`;
 
 const handleLogoClick = () => {
   if (!lenis.value) return;
@@ -66,7 +66,7 @@ const getInTouchClassNames = computed(() => {
 </script>
 
 <template>
-  <header :class="classNames">
+  <header :class="classNames" aria-label="Site header">
     <div class="header-left">
       <ButtonRound
         v-if="projectId !== null"
@@ -100,7 +100,7 @@ const getInTouchClassNames = computed(() => {
         renderAs="a"
         variant="accent"
         :aria-label="t('get-in-touch')"
-        :href="social.find((item) => item.name === 'mail')?.url ?? ''"
+        :href="contactHref"
         external
         :class="getInTouchClassNames"
         data-cursor="circle-white"

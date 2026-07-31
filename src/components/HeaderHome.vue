@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import HeaderLink from "./HeaderLink.vue";
-import { onMounted, ref } from "vue";
+import { computed, onMounted, ref } from "vue";
 import { t } from "../i18n/utils/translate";
 import { lenis } from "../composables/useScroll";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -12,14 +12,15 @@ const handleLinkClick = (link: string) => {
   lenis.value.scrollTo(link);
 };
 
-type ActiveLink = "about" | "projects" | "contact";
+type ActiveLink = "about" | "hobbies" | "projects" | "contact";
 const activeLink = ref<ActiveLink | null>(null);
-const sections: ActiveLink[] = ["about", "projects", "contact"];
-const ariaLabels = {
-  about: t("about"),
+const sections: ActiveLink[] = ["about", "hobbies", "projects", "contact"];
+const labels = computed<Record<ActiveLink, string>>(() => ({
+  about: t("developer"),
+  hobbies: t("about"),
   projects: t("projects"),
   contact: t("contact"),
-};
+}));
 
 const isMounted = ref(false);
 
@@ -82,11 +83,11 @@ onMounted(() => {
         ]"
         @click="handleLinkClick('#' + section)"
         :is-dark-theme="isDarkTheme"
-        :aria-label="ariaLabels[section]"
+        :aria-label="labels[section]"
         data-sound="click"
         data-hoversound="hover"
       >
-        {{ t(section) }}
+        {{ labels[section] }}
       </HeaderLink>
     </div>
   </div>
