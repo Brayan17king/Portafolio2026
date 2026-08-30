@@ -38,6 +38,10 @@ const showTrailer = ref(false);
           <div class="hobby-card-content">
             <p class="hobby-card-title">{{ title }}</p>
             <p class="hobby-card-subtitle" v-if="subtitle">{{ subtitle }}</p>
+            <button v-if="trailerKey" class="hobby-card-trailer" type="button" @click.stop="showTrailer = true">
+              <Play class="hobby-card-trailer-icon" />
+              {{ t("hobby-watch-trailer") }}
+            </button>
             <div class="hobby-card-footer">
               <span class="hobby-card-footer-pill" v-if="footer">{{ footer }}</span>
               <StarRating v-if="rating" :rating="rating" class="hobby-card-footer-rating" />
@@ -50,15 +54,6 @@ const showTrailer = ref(false);
       <div class="hobby-card hobby-card-back">
         <p class="hobby-card-back-title">{{ title }}</p>
         <p class="hobby-card-back-body">{{ body }}</p>
-        <button
-          v-if="trailerKey"
-          class="hobby-card-back-trailer"
-          type="button"
-          @click.stop="showTrailer = true"
-        >
-          <Play class="hobby-card-back-trailer-icon" />
-          {{ t("hobby-watch-trailer") }}
-        </button>
       </div>
     </template>
   </HobbyFlipCard>
@@ -164,6 +159,31 @@ const showTrailer = ref(false);
     color: rgba(255, 255, 255, 0.65);
   }
 
+  &-trailer {
+    position: relative;
+    z-index: 2;
+    align-self: flex-start;
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+    margin-top: var(--space-xs);
+    padding: var(--space-xs) var(--space-md);
+    border-radius: var(--radius-sm);
+    border: none;
+    background-color: var(--color-orange-400);
+    color: var(--color-white-400);
+    font-size: var(--font-size-sm);
+    font-weight: 700;
+    cursor: pointer;
+    --icon-color: var(--color-white-400);
+
+    &-icon {
+      width: var(--icon-size-sm);
+      height: var(--icon-size-sm);
+      flex-shrink: 0;
+    }
+  }
+
   &-footer {
     margin-top: var(--space-xs);
     display: flex;
@@ -202,29 +222,6 @@ const showTrailer = ref(false);
     &-body {
       font-size: var(--font-size-md);
       line-height: 1.5;
-    }
-
-    &-trailer {
-      align-self: flex-start;
-      display: flex;
-      align-items: center;
-      gap: var(--space-xs);
-      margin-top: var(--space-xs);
-      padding: var(--space-xs) var(--space-md);
-      border-radius: var(--radius-sm);
-      border: none;
-      background-color: var(--color-orange-400);
-      color: var(--color-white-400);
-      font-size: var(--font-size-sm);
-      font-weight: 700;
-      cursor: pointer;
-      --icon-color: var(--color-white-400);
-
-      &-icon {
-        width: var(--icon-size-sm);
-        height: var(--icon-size-sm);
-        flex-shrink: 0;
-      }
     }
   }
 }
