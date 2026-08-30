@@ -4,12 +4,20 @@ import Play from "../../../components/icons/Play.vue";
 import Pause from "../../../components/icons/Pause.vue";
 import { useNowPlaying } from "../composables/useNowPlaying";
 
-const props = defineProps<{
-  artist: string;
-  songTitle: string;
-  genre?: string;
-  previewUrl: string;
-  coverUrl: string;
+const props = withDefaults(
+  defineProps<{
+    artist: string;
+    songTitle: string;
+    genre?: string;
+    previewUrl: string;
+    coverUrl: string;
+    active?: boolean;
+  }>(),
+  { active: true },
+);
+
+const emit = defineEmits<{
+  select: [];
 }>();
 
 const RADIUS = 48;
@@ -24,6 +32,13 @@ const dashOffset = computed(() => CIRCUMFERENCE * (1 - progress.value));
 const sleeveStyle = computed(() => ({ backgroundImage: `url(${props.coverUrl})` }));
 
 const togglePlay = async () => {
+  // This card is only peeking beside the active one — bring it into focus
+  // instead of playing it out from under the user.
+  if (!props.active) {
+    emit("select");
+    return;
+  }
+
   const audio = audioRef.value;
   if (!audio) return;
 

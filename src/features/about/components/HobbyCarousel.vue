@@ -74,7 +74,7 @@ watch(
           :style="{ '--offset': offsetFor(index) }"
           @click="goTo(index)"
         >
-          <slot :item="item" :active="offsetFor(index) === 0"></slot>
+          <slot :item="item" :active="offsetFor(index) === 0" :select="() => goTo(index)"></slot>
         </div>
       </div>
     </div>
@@ -147,10 +147,8 @@ watch(
     transform: translateX(calc(var(--offset) * 62%)) scale(calc(1 - min(abs(var(--offset)), 2) * 0.14));
     opacity: calc(1 - min(abs(var(--offset)), 2) * 0.45);
     z-index: calc(10 - abs(var(--offset)));
-    pointer-events: none;
 
     &-active {
-      pointer-events: auto;
       cursor: default;
     }
 

@@ -112,7 +112,7 @@ const activeItems = computed<(HobbyCardItem | MusicEntry | FootballProfile)[]>((
         </div>
 
         <div class="hobbies-content" v-if="activeItems.length > 0">
-          <HobbyCarousel :items="activeItems" :pause-autoplay="isAnyPlaying" v-slot="{ item }">
+          <HobbyCarousel :items="activeItems" :pause-autoplay="isAnyPlaying" v-slot="{ item, active, select }">
             <MusicCard
               v-if="activeCategory === 'music'"
               :artist="(item as MusicEntry).artist"
@@ -120,6 +120,8 @@ const activeItems = computed<(HobbyCardItem | MusicEntry | FootballProfile)[]>((
               :genre="(item as MusicEntry).genre[currentLocale]"
               :preview-url="(item as MusicEntry).previewUrl"
               :cover-url="(item as MusicEntry).coverUrl"
+              :active="active"
+              @select="select"
             />
             <FootballCard
               v-else-if="activeCategory === 'sports'"
