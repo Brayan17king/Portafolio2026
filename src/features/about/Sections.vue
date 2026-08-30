@@ -7,6 +7,7 @@ import Banner from "../../components/Banner.vue";
 import Button from "../../components/Button.vue";
 import HobbyCarousel from "./components/HobbyCarousel.vue";
 import HobbyCard from "./components/HobbyCard.vue";
+import ShowCard from "./components/ShowCard.vue";
 import MusicCard from "./components/MusicCard.vue";
 import { useNowPlaying } from "./composables/useNowPlaying";
 import { books, shows, music, type HobbyCategory, type MusicEntry } from "../../content/hobbies";
@@ -118,6 +119,16 @@ const activeItems = computed<(HobbyCardItem | MusicEntry)[]>(() => {
               :cover-url="(item as MusicEntry).coverUrl"
               :active="active"
               @select="select"
+            />
+            <ShowCard
+              v-else-if="activeCategory === 'shows'"
+              :eyebrow="(item as HobbyCardItem).eyebrow"
+              :badge="(item as HobbyCardItem).badge"
+              :title="(item as HobbyCardItem).title"
+              :subtitle="(item as HobbyCardItem).subtitle"
+              :rating="(item as HobbyCardItem).rating"
+              :body="(item as HobbyCardItem).body"
+              :cover-url="(item as HobbyCardItem).coverUrl"
             />
             <HobbyCard
               v-else
