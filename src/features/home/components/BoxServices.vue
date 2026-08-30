@@ -196,7 +196,7 @@ const categories = computed(() => {
                 :key="item.name"
               >
                 <div class="box-services-item-icon">
-                  <TechIcon :name="item.icon" :size="16" />
+                  <TechIcon :name="item.icon" :size="20" />
                 </div>
                 <p class="box-services-item-name">{{ item.name }}</p>
               </div>
@@ -314,20 +314,21 @@ const categories = computed(() => {
     gap: 6px;
 
     &-title {
-      font-size: 8px;
+      font-size: 9px;
       text-transform: uppercase;
       letter-spacing: 0.12em;
-      opacity: 0.62;
+      opacity: 0.78;
+      color: var(--color-cyan-400);
 
       @include mixins.mq("md") {
-        font-size: 11px;
+        font-size: 12px;
       }
     }
 
     &-grid {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 4px;
+      gap: 6px;
 
       @include mixins.mq("md") {
         grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -340,42 +341,43 @@ const categories = computed(() => {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 4px;
-    min-height: 56px;
-      background: rgba(255, 255, 255, 0.025);
-      border: 1px solid rgba(92, 224, 255, 0.12);
+    gap: 5px;
+    min-height: 64px;
+      background: rgba(92, 224, 255, 0.07);
+      border: 1px solid rgba(92, 224, 255, 0.28);
     border-radius: 11px;
-    padding: 5px 4px 4px;
+    padding: 6px 4px 5px;
     transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease;
 
     &:hover {
       transform: translateY(-1px);
-        background: rgba(92, 224, 255, 0.06);
-        border-color: rgba(92, 224, 255, 0.18);
+        background: rgba(92, 224, 255, 0.14);
+        border-color: rgba(92, 224, 255, 0.45);
     }
 
     &-icon {
       display: flex;
       align-items: center;
       justify-content: center;
-      width: 22px;
-      height: 22px;
+      width: 28px;
+      height: 28px;
       border-radius: 8px;
-        background: rgba(92, 224, 255, 0.06);
-        border: 1px solid rgba(92, 224, 255, 0.1);
-        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(92, 224, 255, 0.2);
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
     }
 
     &-name {
-      font-size: 8px;
-      line-height: 1.1;
+      font-size: 9px;
+      line-height: 1.15;
       text-align: center;
-      opacity: 0.82;
+      opacity: 0.92;
       white-space: normal;
       min-height: 2.2em;
+      font-weight: 500;
 
       @include mixins.mq("md") {
-        font-size: 11px;
+        font-size: 12px;
       }
     }
   }
