@@ -62,10 +62,10 @@ onMounted(loadPreviews);
   padding-right: var(--space-outer);
   background-color: var(--color-beige-400);
   min-height: calc(var(--lvh) * 100 + var(--radius-xxl));
-  padding-bottom: 96px;
+  padding-top: 96px;
 
   @include mixins.mq("md") {
-    padding-bottom: 144px;
+    padding-top: 144px;
     gap: var(--space-xxl);
   }
 

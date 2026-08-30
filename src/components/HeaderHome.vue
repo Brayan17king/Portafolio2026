@@ -14,7 +14,7 @@ const handleLinkClick = (link: string) => {
 
 type ActiveLink = "about" | "hobbies" | "projects" | "contact";
 const activeLink = ref<ActiveLink | null>(null);
-const sections: ActiveLink[] = ["about", "hobbies", "projects", "contact"];
+const sections: ActiveLink[] = ["about", "projects", "hobbies", "contact"];
 const labels = computed<Record<ActiveLink, string>>(() => ({
   about: t("developer"),
   hobbies: t("about"),

@@ -157,8 +157,8 @@ watch(
         <div class="intro-wrapper-spacer"></div>
         <div class="about-spacer" ref="aboutSpacerRef" id="about"></div>
       </div>
-      <AboutSections id="hobbies" />
       <Projects id="projects" @loaded="handleProjectsLoaded" />
+      <AboutSections id="hobbies" />
       <div ref="contactRef" class="home-contact">
         <Contact id="contact" v-if="projectsLoaded" />
       </div>

@@ -154,10 +154,10 @@ const activeItems = computed<(HobbyCardItem | MusicEntry | FootballProfile)[]>((
   flex-direction: column;
   align-items: center;
   background-color: var(--color-beige-400);
-  padding-top: var(--space-xl);
+  padding-bottom: 96px;
 
   @include mixins.mq("md") {
-    padding-top: var(--space-xxl);
+    padding-bottom: 144px;
   }
 
   &-title {
