@@ -159,11 +159,11 @@ const activeItems = computed<(HobbyCardItem | MusicEntry)[]>(() => {
   align-items: center;
   background-color: var(--color-beige-400);
   padding-top: var(--space-xl);
-  padding-bottom: 96px;
+  padding-bottom: var(--space-xl);
 
   @include mixins.mq("md") {
     padding-top: var(--space-xxl);
-    padding-bottom: 144px;
+    padding-bottom: var(--space-xxl);
   }
 
   &-title {
