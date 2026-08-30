@@ -4,7 +4,7 @@ import Play from "../../../components/icons/Play.vue";
 import Pause from "../../../components/icons/Pause.vue";
 import { useNowPlaying } from "../composables/useNowPlaying";
 
-defineProps<{
+const props = defineProps<{
   artist: string;
   songTitle: string;
   genre?: string;
@@ -12,7 +12,7 @@ defineProps<{
   coverUrl: string;
 }>();
 
-const RADIUS = 46;
+const RADIUS = 48;
 const CIRCUMFERENCE = 2 * Math.PI * RADIUS;
 
 const audioRef = ref<HTMLAudioElement | null>(null);
@@ -21,6 +21,7 @@ const progress = ref(0);
 const { requestPlay, clear } = useNowPlaying();
 
 const dashOffset = computed(() => CIRCUMFERENCE * (1 - progress.value));
+const sleeveStyle = computed(() => ({ backgroundImage: `url(${props.coverUrl})` }));
 
 const togglePlay = async () => {
   const audio = audioRef.value;
@@ -76,28 +77,34 @@ onBeforeUnmount(() => {
 
 <template>
   <div class="music-card">
-    <div class="music-card-vinyl" @click.stop="togglePlay">
-      <svg class="music-card-vinyl-ring" viewBox="0 0 100 100">
-        <circle class="music-card-vinyl-ring-track" cx="50" cy="50" r="46" />
-        <circle
-          class="music-card-vinyl-ring-progress"
-          cx="50"
-          cy="50"
-          r="46"
-          :stroke-dasharray="CIRCUMFERENCE"
-          :stroke-dashoffset="dashOffset"
-        />
-      </svg>
+    <div class="music-card-stage">
+      <div class="music-card-sleeve" :style="sleeveStyle"></div>
 
-      <div class="music-card-vinyl-disc" :class="{ 'music-card-vinyl-disc-spinning': isPlaying }">
-        <img :src="coverUrl" :alt="artist" class="music-card-vinyl-art" loading="lazy" />
-        <div class="music-card-vinyl-hole"></div>
+      <div class="music-card-vinyl" :class="{ 'music-card-vinyl-spinning': isPlaying }" @click.stop="togglePlay">
+        <svg class="music-card-vinyl-ring" viewBox="0 0 100 100">
+          <circle class="music-card-vinyl-ring-track" cx="50" cy="50" r="48" />
+          <circle
+            class="music-card-vinyl-ring-progress"
+            cx="50"
+            cy="50"
+            r="48"
+            :stroke-dasharray="CIRCUMFERENCE"
+            :stroke-dashoffset="dashOffset"
+          />
+        </svg>
+
+        <div class="music-card-vinyl-disc">
+          <div class="music-card-vinyl-label">
+            <img :src="coverUrl" :alt="artist" class="music-card-vinyl-art" loading="lazy" />
+          </div>
+          <div class="music-card-vinyl-hole"></div>
+        </div>
+
+        <button class="music-card-vinyl-play" type="button" :aria-label="songTitle">
+          <Pause v-if="isPlaying" class="music-card-vinyl-play-icon" />
+          <Play v-else class="music-card-vinyl-play-icon music-card-vinyl-play-icon-play" />
+        </button>
       </div>
-
-      <button class="music-card-vinyl-play" type="button" :aria-label="songTitle">
-        <Pause v-if="isPlaying" class="music-card-vinyl-play-icon" />
-        <Play v-else class="music-card-vinyl-play-icon music-card-vinyl-play-icon-play" />
-      </button>
     </div>
 
     <div class="music-card-info">
@@ -130,30 +137,66 @@ onBeforeUnmount(() => {
   gap: var(--space-md);
   padding: var(--space-lg) var(--space-md);
   border-radius: var(--radius-lg);
-  border: var(--stroke-sm) solid rgba(255, 255, 255, 0.08);
-  background: radial-gradient(circle at 50% 38%, #3c362b 0%, var(--color-black-400) 62%, #17150f 100%);
+  background: radial-gradient(circle at 50% 30%, #2a261e 0%, var(--color-black-400) 68%, #131109 100%);
   color: var(--color-white-400);
-  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.4);
   overflow: hidden;
 
   &::before {
     content: "";
     position: absolute;
-    top: 6%;
+    top: 0%;
     left: 50%;
-    width: 220px;
-    height: 220px;
+    width: 260px;
+    height: 260px;
     transform: translateX(-50%);
-    background: radial-gradient(circle, rgba(255, 132, 0, 0.16) 0%, rgba(255, 132, 0, 0) 70%);
+    background: radial-gradient(circle, rgba(255, 132, 0, 0.14) 0%, rgba(255, 132, 0, 0) 70%);
     pointer-events: none;
   }
 
-  &-vinyl {
+  &-stage {
     position: relative;
-    width: 176px;
-    height: 176px;
-    cursor: pointer;
+    width: 208px;
+    height: 208px;
     flex-shrink: 0;
+  }
+
+  &-sleeve {
+    position: absolute;
+    right: -6px;
+    bottom: -6px;
+    width: 128px;
+    height: 128px;
+    border-radius: var(--radius-sm);
+    background-size: cover;
+    background-position: center;
+    transform: rotate(11deg);
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.5);
+    filter: brightness(0.5) saturate(1.15);
+
+    &::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+  }
+
+  &-vinyl {
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 190px;
+    height: 190px;
+    cursor: pointer;
+    transform: rotate(-8deg);
+    transition: transform 0.4s var(--ease-power2-out);
+
+    &-spinning {
+      .music-card-vinyl-disc {
+        animation: music-card-spin 4.5s linear infinite;
+      }
+    }
 
     &-ring {
       position: absolute;
@@ -164,14 +207,14 @@ onBeforeUnmount(() => {
 
       &-track {
         fill: none;
-        stroke: rgba(255, 255, 255, 0.12);
-        stroke-width: 2;
+        stroke: rgba(255, 255, 255, 0.1);
+        stroke-width: 1.5;
       }
 
       &-progress {
         fill: none;
         stroke: var(--color-orange-400);
-        stroke-width: 2;
+        stroke-width: 1.5;
         stroke-linecap: round;
         transition: stroke-dashoffset 0.15s linear;
       }
@@ -179,18 +222,27 @@ onBeforeUnmount(() => {
 
     &-disc {
       position: absolute;
-      inset: 14px;
+      inset: 10px;
       border-radius: 50%;
-      overflow: hidden;
-      background-color: #111;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+      background:
+        repeating-radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.05) 0, rgba(255, 255, 255, 0.05) 1px, transparent 1px, transparent 5px),
+        radial-gradient(circle at 34% 28%, rgba(255, 255, 255, 0.16), transparent 55%),
+        #0c0c0c;
+      box-shadow:
+        0 10px 24px rgba(0, 0, 0, 0.55),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.06);
       display: flex;
       align-items: center;
       justify-content: center;
+    }
 
-      &-spinning {
-        animation: music-card-spin 4s linear infinite;
-      }
+    &-label {
+      position: relative;
+      width: 44%;
+      height: 44%;
+      border-radius: 50%;
+      overflow: hidden;
+      box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.12);
     }
 
     &-art {
@@ -201,20 +253,20 @@ onBeforeUnmount(() => {
 
     &-hole {
       position: absolute;
-      width: 14px;
-      height: 14px;
+      width: 10px;
+      height: 10px;
       border-radius: 50%;
       background-color: var(--color-black-400);
-      border: 2px solid rgba(255, 255, 255, 0.2);
+      border: 2px solid rgba(255, 255, 255, 0.25);
     }
 
     &-play {
       position: absolute;
       top: 50%;
       left: 50%;
-      transform: translate(-50%, -50%);
-      width: 48px;
-      height: 48px;
+      transform: translate(-50%, -50%) rotate(8deg);
+      width: 46px;
+      height: 46px;
       border-radius: 50%;
       border: none;
       cursor: pointer;
@@ -222,8 +274,9 @@ onBeforeUnmount(() => {
       align-items: center;
       justify-content: center;
       overflow: hidden;
-      background-color: rgba(0, 0, 0, 0.55);
+      background-color: rgba(0, 0, 0, 0.6);
       backdrop-filter: blur(2px);
+      z-index: 2;
       --icon-color: var(--color-white-400);
 
       &-icon {
@@ -239,6 +292,7 @@ onBeforeUnmount(() => {
   }
 
   &-info {
+    position: relative;
     text-align: center;
     display: flex;
     flex-direction: column;

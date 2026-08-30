@@ -405,4 +405,114 @@ export const music: MusicEntry[] = [
       "https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/35/85/36/3585365d-4678-0648-1bfd-76ea49ba8c9c/886448841388.jpg/1200x1200bb.jpg",
   },
   // TODO: add the reggaeton artist previously written as "ladio carrion" once the correct name is confirmed.
+  {
+    artist: "Tainy, Bad Bunny & Julieta Venegas",
+    genre: { es: "Urbano latino", en: "Latin urban" },
+    albumTitle: "Lo Siento BB:/",
+    songTitle: "Lo Siento BB:/",
+    previewUrl:
+      "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/8b/d8/6f/8bd86fba-a872-6f5b-0580-6ab8a2fcdab3/mzaf_17568360462674085748.plus.aac.p.m4a",
+    coverUrl:
+      "https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/5d/6a/00/5d6a0054-5145-6011-c638-3e2666d0e8dd/192641833472_Cover.jpg/1200x1200bb.jpg",
+  },
+  {
+    artist: "Bad Bunny & Jhay Cortez",
+    genre: { es: "Urbano latino", en: "Latin urban" },
+    albumTitle: "Un Verano Sin Ti",
+    songTitle: "Tarot",
+    previewUrl:
+      "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/93/23/dd/9323ddbb-4a2c-249b-9e39-88703c567f41/mzaf_12486720115800977792.plus.aac.p.m4a",
+    coverUrl:
+      "https://is1-ssl.mzstatic.com/image/thumb/Music112/v4/3e/04/eb/3e04ebf6-370f-f59d-ec84-2c2643db92f1/196626945068.jpg/1200x1200bb.jpg",
+  },
+  {
+    artist: "Mora, Bad Bunny & Sech",
+    genre: { es: "Urbano latino", en: "Latin urban" },
+    albumTitle: "Volando (Remix)",
+    songTitle: "Volando",
+    previewUrl:
+      "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/96/1c/5f/961c5f6b-3286-cdd7-2527-0ebfd8018149/mzaf_15726338318314112724.plus.aac.p.m4a",
+    coverUrl:
+      "https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/73/04/1e/73041e72-03cc-6b80-3f76-2bce9b77d69f/196292037340.jpg/1200x1200bb.jpg",
+  },
+  {
+    artist: "Beéle",
+    genre: { es: "Pop latino", en: "Latin pop" },
+    albumTitle: "Loco",
+    songTitle: "Loco",
+    previewUrl:
+      "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/ef/78/ea/ef78eab0-0e11-e861-3d74-e8ad5228d286/mzaf_10954667647200562678.plus.aac.p.m4a",
+    coverUrl:
+      "https://is1-ssl.mzstatic.com/image/thumb/Music113/v4/69/93/b1/6993b13f-8bf4-a175-75dc-4c4b7e2260a9/859734687236_cover.jpg/1200x1200bb.jpg",
+  },
+  {
+    artist: "Myke Towers",
+    genre: { es: "Urbano latino", en: "Latin urban" },
+    albumTitle: "Easy Money Baby",
+    songTitle: "Girl",
+    previewUrl:
+      "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/39/85/61/39856164-dcc0-2f1c-cf7e-c11eb1b06861/mzaf_708172583386087036.plus.aac.p.m4a",
+    coverUrl:
+      "https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/76/63/86/76638602-1e1a-5656-20de-442dfb6e2b6f/194491908096.jpg/1200x1200bb.jpg",
+  },
+  {
+    artist: "Bad Bunny",
+    genre: { es: "Urbano latino", en: "Latin urban" },
+    albumTitle: "Un Verano Sin Ti",
+    songTitle: "Un Coco",
+    previewUrl:
+      "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/23/fe/3c/23fe3c8e-f711-f1aa-09a7-0ee6d722ce0b/mzaf_12118970714648286716.plus.aac.p.m4a",
+    coverUrl:
+      "https://is1-ssl.mzstatic.com/image/thumb/Music112/v4/3e/04/eb/3e04ebf6-370f-f59d-ec84-2c2643db92f1/196626945068.jpg/1200x1200bb.jpg",
+  },
+  {
+    artist: "Mora",
+    genre: { es: "Urbano latino", en: "Latin urban" },
+    albumTitle: "ESTRELLA",
+    songTitle: "Donde Se Aprende a Querer?",
+    previewUrl:
+      "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/2e/f7/83/2ef783e6-12ee-31e7-d837-552083a6ed10/mzaf_13901399736219003720.plus.aac.p.m4a",
+    coverUrl:
+      "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/ff/e3/6d/ffe36d58-d153-826d-4f7f-7ba38e81c75a/197189639050.jpg/1200x1200bb.jpg",
+  },
+  {
+    artist: "J Balvin",
+    genre: { es: "Urbano latino", en: "Latin urban" },
+    albumTitle: "Colores",
+    songTitle: "Rojo",
+    previewUrl:
+      "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/df/dd/2c/dfdd2cca-64d6-bcdf-65e4-c56bb953e282/mzaf_976895891674056627.plus.aac.p.m4a",
+    coverUrl:
+      "https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/ae/b3/66/aeb36667-f9b2-c455-c3fc-a53bbd5ec4c1/20UMGIM10542.rgb.jpg/1200x1200bb.jpg",
+  },
+  {
+    artist: "Feid",
+    genre: { es: "Urbano latino", en: "Latin urban" },
+    albumTitle: "Sorry 4 That Much",
+    songTitle: "Sorry 4 That Much",
+    previewUrl:
+      "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/90/f2/c9/90f2c911-a8c4-8bff-3137-8ec439748536/mzaf_547215721683041049.plus.aac.p.m4a",
+    coverUrl:
+      "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/9c/20/ab/9c20ab01-62e6-239c-fcce-79dc1d711ac1/24UMGIM61720.rgb.jpg/1200x1200bb.jpg",
+  },
+  {
+    artist: "Bad Bunny",
+    genre: { es: "Urbano latino", en: "Latin urban" },
+    albumTitle: "Un Verano Sin Ti",
+    songTitle: "Un Verano Sin Ti",
+    previewUrl:
+      "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/29/21/aa/2921aa77-0a9b-4771-a6e9-2db85f177444/mzaf_11940520242658716528.plus.aac.p.m4a",
+    coverUrl:
+      "https://is1-ssl.mzstatic.com/image/thumb/Music112/v4/3e/04/eb/3e04ebf6-370f-f59d-ec84-2c2643db92f1/196626945068.jpg/1200x1200bb.jpg",
+  },
+  {
+    artist: "Mora",
+    genre: { es: "Urbano latino", en: "Latin urban" },
+    albumTitle: "ESTRELLA",
+    songTitle: "Pasajero",
+    previewUrl:
+      "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/ab/cd/fc/abcdfc00-196f-1563-aacf-55fa6250bb34/mzaf_946837812915397019.plus.aac.p.m4a",
+    coverUrl:
+      "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/ff/e3/6d/ffe36d58-d153-826d-4f7f-7ba38e81c75a/197189639050.jpg/1200x1200bb.jpg",
+  },
 ];
