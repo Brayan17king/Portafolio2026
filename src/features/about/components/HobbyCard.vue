@@ -63,8 +63,6 @@ const showTrailer = ref(false);
     </template>
   </HobbyFlipCard>
 
-  <TrailerModal v-if="showTrailer && trailerKey" :video-key="trailerKey" :title="title" @close="showTrailer = false" />
-
   <div class="hobby-card hobby-card-static" v-else>
     <img v-if="coverUrl" :src="coverUrl" :alt="title" class="hobby-card-cover" loading="lazy" />
     <div class="hobby-card-cover hobby-card-cover-fallback" v-else></div>
@@ -81,6 +79,8 @@ const showTrailer = ref(false);
       </div>
     </div>
   </div>
+
+  <TrailerModal v-if="showTrailer && trailerKey" :video-key="trailerKey" :title="title" @close="showTrailer = false" />
 </template>
 
 <style scoped lang="scss">
