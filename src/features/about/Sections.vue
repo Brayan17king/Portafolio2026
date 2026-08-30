@@ -8,9 +8,8 @@ import Button from "../../components/Button.vue";
 import HobbyCarousel from "./components/HobbyCarousel.vue";
 import HobbyCard from "./components/HobbyCard.vue";
 import MusicCard from "./components/MusicCard.vue";
-import FootballCard from "./components/FootballCard.vue";
 import { useNowPlaying } from "./composables/useNowPlaying";
-import { books, football, shows, music, type HobbyCategory, type MusicEntry, type FootballProfile } from "../../content/hobbies";
+import { books, shows, music, type HobbyCategory, type MusicEntry } from "../../content/hobbies";
 
 const { isAnyPlaying } = useNowPlaying();
 
@@ -31,7 +30,6 @@ const activeCategory = ref<HobbyCategory>("books");
 
 const categories: { id: HobbyCategory; labelKey: string }[] = [
   { id: "books", labelKey: "hobbies-books" },
-  { id: "sports", labelKey: "hobbies-sports" },
   { id: "shows", labelKey: "hobbies-shows" },
   { id: "music", labelKey: "hobbies-music" },
 ];
@@ -70,12 +68,10 @@ const showItems = computed<HobbyCardItem[]>(() =>
   }),
 );
 
-const activeItems = computed<(HobbyCardItem | MusicEntry | FootballProfile)[]>(() => {
+const activeItems = computed<(HobbyCardItem | MusicEntry)[]>(() => {
   switch (activeCategory.value) {
     case "books":
       return bookItems.value;
-    case "sports":
-      return [football];
     case "shows":
       return showItems.value;
     case "music":
@@ -122,11 +118,6 @@ const activeItems = computed<(HobbyCardItem | MusicEntry | FootballProfile)[]>((
               :cover-url="(item as MusicEntry).coverUrl"
               :active="active"
               @select="select"
-            />
-            <FootballCard
-              v-else-if="activeCategory === 'sports'"
-              :card-image-url="(item as FootballProfile).cardImageUrl"
-              :note="(item as FootballProfile).note[currentLocale]"
             />
             <HobbyCard
               v-else

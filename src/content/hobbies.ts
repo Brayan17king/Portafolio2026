@@ -1,6 +1,4 @@
-import footballCardImage from "../assets/images/football-card.webp";
-
-export type HobbyCategory = "books" | "sports" | "shows" | "music";
+export type HobbyCategory = "books" | "shows" | "music";
 
 export interface LocalizedText {
   en: string;
@@ -36,11 +34,6 @@ export interface MusicEntry {
   songTitle: string;
   previewUrl: string;
   coverUrl: string;
-}
-
-export interface FootballProfile {
-  cardImageUrl: string;
-  note: LocalizedText;
 }
 
 // TODO: rating (1-5) and review are placeholders — replace with your real rating and a short first-person
@@ -198,18 +191,6 @@ export const books: BookEntry[] = [
     coverUrl: "https://is1-ssl.mzstatic.com/image/thumb/Publication116/v4/b1/12/88/b112881d-1ea2-e1f6-31ff-d47efef12b1a/9788439729839.jpg/1200x1200bb.jpg",
   },
 ];
-
-export const football: FootballProfile = {
-  cardImageUrl: footballCardImage,
-  // Draft — rewrite this in your own words, it's just a starting point.
-  // NOTE: the card image itself has Spanish labels baked into the pixels (OVR, DELANTERO, stats, etc.) —
-  // it will not switch to English. Only this note (the flip side) is localized. A separate English-labeled
-  // card image would be needed for full localization of the front.
-  note: {
-    es: "Delantero de fin de semana: prefiero la pausa antes del remate a cualquier plan tranquilo. Juego con el mismo grupo de amigos desde hace años — ahí se resuelven más problemas que en cualquier retro de equipo.",
-    en: "Weekend striker: I'll take the pause before the shot over any quiet plan. I've played with the same group of friends for years — more gets resolved there than in any team retro.",
-  },
-};
 
 // TODO: rating is pending — add your personal 1-5 rating for each title, same as the books.
 export const shows: ShowEntry[] = [
