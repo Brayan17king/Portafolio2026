@@ -325,36 +325,6 @@ export const shows: ShowEntry[] = [
 
 export const music: MusicEntry[] = [
   {
-    artist: "R.E.M.",
-    genre: { es: "Rock", en: "Rock" },
-    albumTitle: "Out of Time",
-    songTitle: "Losing My Religion",
-    previewUrl:
-      "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/af/be/f5/afbef592-8f00-fe28-8ab4-5c070827b2f8/mzaf_4959761764791628207.plus.aac.p.m4a",
-    coverUrl:
-      "https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/05/ae/86/05ae8650-7bce-2377-8959-78ea033a99d9/00888072013711.rgb.jpg/1200x1200bb.jpg",
-  },
-  {
-    artist: "Maná",
-    genre: { es: "Rock en español", en: "Spanish rock" },
-    albumTitle: "Sueños Líquidos",
-    songTitle: "Rayando el Sol",
-    previewUrl:
-      "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/3f/01/86/3f0186bb-c33c-2d9e-0438-0eebdb8ed03d/mzaf_13744697863124499124.plus.aac.p.m4a",
-    coverUrl:
-      "https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/a3/39/fd/a339fdf6-e8f6-0a88-8799-b1db02c3aee9/mzi.nvqsivqv.jpg/1200x1200bb.jpg",
-  },
-  {
-    artist: "Guns N' Roses",
-    genre: { es: "Hard Rock", en: "Hard Rock" },
-    albumTitle: "Appetite for Destruction",
-    songTitle: "Sweet Child O' Mine",
-    previewUrl:
-      "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/0d/cb/f3/0dcbf381-7cbf-78b8-7f74-d5789adf65a1/mzaf_17081805577020235844.plus.aac.p.m4a",
-    coverUrl:
-      "https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/a0/4d/c4/a04dc484-03cc-02aa-fa82-5334fcb4bc16/18UMGIM24878.rgb.jpg/1200x1200bb.jpg",
-  },
-  {
     artist: "Nirvana",
     genre: { es: "Grunge", en: "Grunge" },
     albumTitle: "Nirvana",
@@ -363,16 +333,6 @@ export const music: MusicEntry[] = [
       "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/a6/53/1e/a6531efa-397c-eb73-ecab-9b2790c1471e/mzaf_16440344883389407474.plus.aac.p.m4a",
     coverUrl:
       "https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/7b/58/c2/7b58c21a-2b51-2bb2-e59a-9bb9b96ad8c3/00602567924166.rgb.jpg/1200x1200bb.jpg",
-  },
-  {
-    artist: "Coldplay",
-    genre: { es: "Alternativo", en: "Alternative" },
-    albumTitle: "Viva la Vida",
-    songTitle: "Viva La Vida",
-    previewUrl:
-      "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview116/v4/2b/04/65/2b0465c3-2db1-e461-2362-14b528456b8f/mzaf_1805426141027060154.plus.aac.p.m4a",
-    coverUrl:
-      "https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/fa/41/1c/fa411c37-7a65-8a3e-71c9-4b566c49617c/5099967983858_1562x1562_300dpi.jpg/1200x1200bb.jpg",
   },
   {
     artist: "Bad Bunny",
