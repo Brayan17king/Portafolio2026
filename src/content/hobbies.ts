@@ -25,6 +25,8 @@ export interface ShowEntry {
   rating: number;
   synopsis: LocalizedText;
   posterUrl: string;
+  // YouTube video id for the official trailer, from a verified official channel.
+  trailerKey?: string;
 }
 
 export interface MusicEntry {
@@ -205,6 +207,7 @@ export const shows: ShowEntry[] = [
       en: "The adventures of a group of explorers who make use of a newly discovered wormhole to surpass the limitations on human space travel and conquer the vast distances involved in an interstellar voyage.",
     },
     posterUrl: "https://image.tmdb.org/t/p/w780/d1QKiYtceF3GDtxvTFXFAqwwah9.jpg",
+    trailerKey: "LY19rHKAaAg",
   },
   {
     title: { es: "Matrix", en: "The Matrix" },
@@ -217,6 +220,7 @@ export const shows: ShowEntry[] = [
       en: "Set in the 22nd century, The Matrix tells the story of a computer hacker who joins a group of underground insurgents fighting the vast and powerful computers who now rule the earth.",
     },
     posterUrl: "https://image.tmdb.org/t/p/w780/tpW2X2DvxtTHJ61iJ7zNYYrJihs.jpg",
+    trailerKey: "FVI84Dfx2-I",
   },
   {
     title: { es: "El increíble castillo vagabundo", en: "Howl's Moving Castle" },
@@ -229,6 +233,7 @@ export const shows: ShowEntry[] = [
       en: "Sophie, a young milliner, is turned into an elderly woman by a witch who enters her shop and curses her. She encounters a wizard named Howl and gets caught up in his resistance to fighting for the king.",
     },
     posterUrl: "https://image.tmdb.org/t/p/w780/p8EARnEw8KPZzlZg3vkseYVMczu.jpg",
+    trailerKey: "ARCQf2CEr8k",
   },
   {
     title: { es: "Harry Potter y la piedra filosofal", en: "Harry Potter and the Philosopher's Stone" },
@@ -241,6 +246,7 @@ export const shows: ShowEntry[] = [
       en: "Harry Potter has lived under the stairs at his aunt and uncle's house his whole life. But on his 11th birthday, he learns he's a powerful wizard, with a place waiting for him at the Hogwarts School of Witchcraft and Wizardry.",
     },
     posterUrl: "https://image.tmdb.org/t/p/w780/roKMM6S9DRGFNujmvqlk8l5YbN3.jpg",
+    trailerKey: "l91Km49W9qI",
   },
   {
     title: { es: "Vengadores: Endgame", en: "Avengers: Endgame" },
@@ -253,6 +259,7 @@ export const shows: ShowEntry[] = [
       en: "After the devastating events of Avengers: Infinity War, the universe is in ruins. With the help of remaining allies, the Avengers must assemble once more to undo Thanos' actions and restore order to the universe.",
     },
     posterUrl: "https://image.tmdb.org/t/p/w780/br6krBFpaYmCSglLBWRuhui7tPc.jpg",
+    trailerKey: "L2NAh3CIdig",
   },
   {
     title: { es: "Rick and Morty", en: "Rick and Morty" },
@@ -265,6 +272,7 @@ export const shows: ShowEntry[] = [
       en: "Follows a sociopathic genius scientist who drags his inherently timid grandson on adventures across the universe.",
     },
     posterUrl: "https://image.tmdb.org/t/p/w780/arSWOHGl9uQvhDrWjgyl3aaypca.jpg",
+    trailerKey: "ySYnTO7leqI",
   },
   {
     title: { es: "Breaking Bad", en: "Breaking Bad" },
@@ -277,6 +285,7 @@ export const shows: ShowEntry[] = [
       en: "Walter White, a New Mexico chemistry teacher, is diagnosed with Stage III cancer. He becomes filled with a desire to secure his family's financial future as he enters the dangerous world of drugs and crime.",
     },
     posterUrl: "https://image.tmdb.org/t/p/w780/anFx9aTOOYqgS3v7x3R84Kz67ly.jpg",
+    trailerKey: "VaOt6tXyf2Y",
   },
   {
     title: { es: "Game of Thrones", en: "Game of Thrones" },
@@ -289,6 +298,7 @@ export const shows: ShowEntry[] = [
       en: "Seven noble families fight for control of the mythical land of Westeros, while a very ancient evil awakens in the farthest north, in this adaptation of George R.R. Martin's fantasy novels.",
     },
     posterUrl: "https://image.tmdb.org/t/p/w780/3hDtRuwTfQQYRst3kjhvp4Cogjw.jpg",
+    trailerKey: "KPLWWIOCOOQ",
   },
   {
     title: { es: "Primal", en: "Primal" },
@@ -301,6 +311,7 @@ export const shows: ShowEntry[] = [
       en: "A caveman forms a bond with a dinosaur as they struggle to survive in a hostile world.",
     },
     posterUrl: "https://image.tmdb.org/t/p/w780/evxTYlsABHvKkLBtwYqlW3HYnHw.jpg",
+    trailerKey: "V4UN616BFDA",
   },
 ];
 

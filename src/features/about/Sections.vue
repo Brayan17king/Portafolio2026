@@ -24,6 +24,7 @@ interface HobbyCardItem {
   rating?: number;
   body?: string;
   coverUrl?: string;
+  trailerKey?: string;
 }
 
 const activeCategory = ref<HobbyCategory>("books");
@@ -64,6 +65,7 @@ const showItems = computed<HobbyCardItem[]>(() =>
       rating: show.rating,
       body: show.synopsis[loc] || undefined,
       coverUrl: show.posterUrl || undefined,
+      trailerKey: show.trailerKey,
     };
   }),
 );
@@ -129,6 +131,7 @@ const activeItems = computed<(HobbyCardItem | MusicEntry)[]>(() => {
               :rating="(item as HobbyCardItem).rating"
               :body="(item as HobbyCardItem).body"
               :cover-url="(item as HobbyCardItem).coverUrl"
+              :trailer-key="(item as HobbyCardItem).trailerKey"
             />
           </HobbyCarousel>
         </div>

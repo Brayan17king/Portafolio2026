@@ -1,7 +1,10 @@
 <script setup lang="ts">
-import { computed } from "vue";
+import { computed, ref } from "vue";
+import { t } from "../../../i18n/utils/translate";
 import HobbyFlipCard from "./HobbyFlipCard.vue";
 import StarRating from "./StarRating.vue";
+import Play from "../../../components/icons/Play.vue";
+import TrailerModal from "./TrailerModal.vue";
 
 const props = defineProps<{
   eyebrow?: string;
@@ -12,9 +15,11 @@ const props = defineProps<{
   rating?: number;
   body?: string;
   coverUrl?: string;
+  trailerKey?: string;
 }>();
 
 const hasBack = computed(() => !!props.body);
+const showTrailer = ref(false);
 </script>
 
 <template>
@@ -45,9 +50,20 @@ const hasBack = computed(() => !!props.body);
       <div class="hobby-card hobby-card-back">
         <p class="hobby-card-back-title">{{ title }}</p>
         <p class="hobby-card-back-body">{{ body }}</p>
+        <button
+          v-if="trailerKey"
+          class="hobby-card-back-trailer"
+          type="button"
+          @click.stop="showTrailer = true"
+        >
+          <Play class="hobby-card-back-trailer-icon" />
+          {{ t("hobby-watch-trailer") }}
+        </button>
       </div>
     </template>
   </HobbyFlipCard>
+
+  <TrailerModal v-if="showTrailer && trailerKey" :video-key="trailerKey" :title="title" @close="showTrailer = false" />
 
   <div class="hobby-card hobby-card-static" v-else>
     <img v-if="coverUrl" :src="coverUrl" :alt="title" class="hobby-card-cover" loading="lazy" />
@@ -186,6 +202,29 @@ const hasBack = computed(() => !!props.body);
     &-body {
       font-size: var(--font-size-md);
       line-height: 1.5;
+    }
+
+    &-trailer {
+      align-self: flex-start;
+      display: flex;
+      align-items: center;
+      gap: var(--space-xs);
+      margin-top: var(--space-xs);
+      padding: var(--space-xs) var(--space-md);
+      border-radius: var(--radius-sm);
+      border: none;
+      background-color: var(--color-orange-400);
+      color: var(--color-white-400);
+      font-size: var(--font-size-sm);
+      font-weight: 700;
+      cursor: pointer;
+      --icon-color: var(--color-white-400);
+
+      &-icon {
+        width: var(--icon-size-sm);
+        height: var(--icon-size-sm);
+        flex-shrink: 0;
+      }
     }
   }
 }
