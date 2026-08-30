@@ -41,10 +41,6 @@ html {
   height: calc(var(--svh) * 100);
 }
 
-.trailer-modal-open {
-  overflow: hidden;
-}
-
 ::selection {
   background: #2d2a24;
   color: rgb(255, 255, 255);

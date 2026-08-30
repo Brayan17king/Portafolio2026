@@ -1,10 +1,7 @@
 <script setup lang="ts">
-import { computed, ref } from "vue";
-import { t } from "../../../i18n/utils/translate";
+import { computed } from "vue";
 import HobbyFlipCard from "./HobbyFlipCard.vue";
 import StarRating from "./StarRating.vue";
-import Play from "../../../components/icons/Play.vue";
-import TrailerModal from "./TrailerModal.vue";
 
 const props = defineProps<{
   eyebrow?: string;
@@ -15,11 +12,9 @@ const props = defineProps<{
   rating?: number;
   body?: string;
   coverUrl?: string;
-  trailerKey?: string;
 }>();
 
 const hasBack = computed(() => !!props.body);
-const showTrailer = ref(false);
 </script>
 
 <template>
@@ -38,10 +33,6 @@ const showTrailer = ref(false);
           <div class="hobby-card-content">
             <p class="hobby-card-title">{{ title }}</p>
             <p class="hobby-card-subtitle" v-if="subtitle">{{ subtitle }}</p>
-            <button v-if="trailerKey" class="hobby-card-trailer" type="button" @click.stop="showTrailer = true">
-              <Play class="hobby-card-trailer-icon" />
-              {{ t("hobby-watch-trailer") }}
-            </button>
             <div class="hobby-card-footer">
               <span class="hobby-card-footer-pill" v-if="footer">{{ footer }}</span>
               <StarRating v-if="rating" :rating="rating" class="hobby-card-footer-rating" />
@@ -74,8 +65,6 @@ const showTrailer = ref(false);
       </div>
     </div>
   </div>
-
-  <TrailerModal v-if="showTrailer && trailerKey" :video-key="trailerKey" :title="title" @close="showTrailer = false" />
 </template>
 
 <style scoped lang="scss">
@@ -157,31 +146,6 @@ const showTrailer = ref(false);
   &-subtitle {
     font-size: var(--font-size-sm);
     color: rgba(255, 255, 255, 0.65);
-  }
-
-  &-trailer {
-    position: relative;
-    z-index: 2;
-    align-self: flex-start;
-    display: flex;
-    align-items: center;
-    gap: var(--space-xs);
-    margin-top: var(--space-xs);
-    padding: var(--space-xs) var(--space-md);
-    border-radius: var(--radius-sm);
-    border: none;
-    background-color: var(--color-orange-400);
-    color: var(--color-white-400);
-    font-size: var(--font-size-sm);
-    font-weight: 700;
-    cursor: pointer;
-    --icon-color: var(--color-white-400);
-
-    &-icon {
-      width: var(--icon-size-sm);
-      height: var(--icon-size-sm);
-      flex-shrink: 0;
-    }
   }
 
   &-footer {
