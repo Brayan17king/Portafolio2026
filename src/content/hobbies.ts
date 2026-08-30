@@ -141,6 +141,62 @@ export const books: BookEntry[] = [
     review: { es: "Pendiente: agrega tu reseña.", en: "Pending: add your own review." },
     coverUrl: "https://is1-ssl.mzstatic.com/image/thumb/Publication211/v4/81/ae/91/81ae91ce-b57a-546d-355d-d9fbba38acb5/9788439729983.jpg/1200x1200bb.jpg",
   },
+  {
+    title: { es: "Los funerales de la Mamá Grande", en: "Big Mama's Funeral" },
+    author: "Gabriel García Márquez",
+    year: 1962,
+    genre: { es: "Cuentos", en: "Short stories" },
+    rating: 4,
+    status: "finished",
+    synopsis: {
+      es: "Colección de siete relatos y la novela corta que da título al libro, ambientados en el universo narrativo de Macondo. El relato principal narra, con tono satírico, las opulentas exequias de la matriarca todopoderosa de un pueblo ficticio, que gobernó su feudo y a su gente durante generaciones.",
+      en: "A collection of seven short stories plus the title novella, set in García Márquez's Macondo universe. The title piece satirically narrates the opulent funeral of the all-powerful matriarch of a fictional town, who ruled her domain and its people for generations.",
+    },
+    review: { es: "Pendiente: agrega tu reseña.", en: "Pending: add your own review." },
+    coverUrl: "https://is1-ssl.mzstatic.com/image/thumb/Publication126/v4/f2/78/f8/f278f8af-af4d-8304-dc54-918f746f62ad/9788439729921.jpg/1200x1200bb.jpg",
+  },
+  {
+    title: { es: "El coronel no tiene quien le escriba", en: "No One Writes to the Colonel" },
+    author: "Gabriel García Márquez",
+    year: 1961,
+    genre: { es: "Novela corta", en: "Novella" },
+    rating: 5,
+    status: "finished",
+    synopsis: {
+      es: "Un viejo coronel retirado espera, semana tras semana, la carta que confirme la pensión que el gobierno le debe desde la guerra civil, mientras él y su esposa sobreviven en la pobreza más extrema con la única compañía de un gallo de pelea.",
+      en: "An aging, retired colonel waits, week after week, for the letter confirming the war pension the government owes him, while he and his wife survive in extreme poverty, their only company a fighting rooster.",
+    },
+    review: { es: "Pendiente: agrega tu reseña.", en: "Pending: add your own review." },
+    coverUrl: "https://is1-ssl.mzstatic.com/image/thumb/Publication211/v4/0f/6a/df/0f6adf27-fd27-ff0b-8178-e59d48d5cbd6/9788439730026.jpg/1200x1200bb.jpg",
+  },
+  {
+    title: { es: "Crónica de una muerte anunciada", en: "Chronicle of a Death Foretold" },
+    author: "Gabriel García Márquez",
+    year: 1981,
+    genre: { es: "Ficción", en: "Fiction" },
+    rating: 4,
+    status: "finished",
+    synopsis: {
+      es: "A través de los testimonios de los habitantes de un pueblo, se reconstruye el asesinato anunciado de Santiago Nasar, un crimen que todos sabían que iba a ocurrir pero que nadie logró evitar.",
+      en: "Through the testimonies of a town's inhabitants, the novel reconstructs the foretold murder of Santiago Nasar — a killing everyone knew was coming, yet no one managed to stop.",
+    },
+    review: { es: "Pendiente: agrega tu reseña.", en: "Pending: add your own review." },
+    coverUrl: "https://is1-ssl.mzstatic.com/image/thumb/Publication116/v4/cd/02/51/cd0251ba-44ff-0de2-e0e7-4dbf2907c313/9788439729952.jpg/1200x1200bb.jpg",
+  },
+  {
+    title: { es: "El otoño del patriarca", en: "The Autumn of the Patriarch" },
+    author: "Gabriel García Márquez",
+    year: 1975,
+    genre: { es: "Realismo mágico", en: "Magical realism" },
+    rating: 0,
+    status: "reading",
+    synopsis: {
+      es: "Retrato de un dictador latinoamericano sin nombre, contado en forma cíclica y experimental, que explora el poder absoluto, la soledad y la decadencia a través de la agonía y muerte del patriarca.",
+      en: "A portrait of an unnamed Latin American dictator, told in cyclical, experimental prose, exploring absolute power, solitude, and decay through the patriarch's agony and death.",
+    },
+    review: { es: "Pendiente: agrega tu reseña.", en: "Pending: add your own review." },
+    coverUrl: "https://is1-ssl.mzstatic.com/image/thumb/Publication116/v4/b1/12/88/b112881d-1ea2-e1f6-31ff-d47efef12b1a/9788439729839.jpg/1200x1200bb.jpg",
+  },
 ];
 
 export const football: FootballProfile = {
