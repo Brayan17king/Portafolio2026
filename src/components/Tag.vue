@@ -91,6 +91,26 @@ const classes = computed(() => ["tag", `tag-variant-${props.variant}`]);
       background-color: #95630e;
       color: white;
     }
+
+    &-flutter {
+      background-color: #02569b;
+      color: white;
+    }
+
+    &-dotnet {
+      background-color: #512bd4;
+      color: white;
+    }
+
+    &-firebase {
+      background-color: #ffca28;
+      color: #3d2e00;
+    }
+
+    &-sqlserver {
+      background-color: #ee352c;
+      color: white;
+    }
   }
 }
 </style>

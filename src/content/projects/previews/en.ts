@@ -1,4 +1,4 @@
-import thumbnailCubeWar from "../../../assets/thumbnails/cubewar.webp";
+import thumbnailLeApp from "../../../assets/thumbnails/leapp.webp";
 import thumbnailQuibbo from "../../../assets/thumbnails/quibbo.webp";
 //import thumbnailParticles from "../../../assets/thumbnails/particles.webp";
 import thumbnailPokedex from "../../../assets/thumbnails/pokedex.webp";
@@ -15,10 +15,10 @@ export default [
     description: "Social habit tracking app",
   },
   {
-    title: "CubeWar",
-    slug: "cubewar",
-    thumbnail: thumbnailCubeWar,
-    description: "Multiplayer strategy game",
+    title: "LE App",
+    slug: "leapp",
+    thumbnail: thumbnailLeApp,
+    description: "Institutional mobile app in Flutter",
   },
   {
     title: "Quibbo",
