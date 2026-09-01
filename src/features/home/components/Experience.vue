@@ -22,6 +22,7 @@ const items = computed(() =>
       logoTone: entry.logoTone,
       period: entry.period[loc],
       description: entry.description[loc],
+      stack: entry.stack,
       isProject: entry.type === "project",
       current: entry.current,
     };
@@ -95,6 +96,9 @@ onUnmounted(() => {
               <span class="experience-item-meta">{{ item.company }} · {{ item.period }}</span>
             </div>
             <p class="experience-item-description">{{ item.description }}</p>
+            <ul class="experience-item-stack" v-if="item.stack.length">
+              <li class="experience-item-stack-tag" v-for="tech in item.stack" :key="tech">{{ tech }}</li>
+            </ul>
           </div>
         </div>
       </div>
@@ -301,6 +305,25 @@ onUnmounted(() => {
       color: var(--color-text-300);
       line-height: 1.6;
       max-width: 42rem;
+    }
+
+    &-stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-xs);
+      margin-top: var(--space-sm);
+      list-style: none;
+
+      &-tag {
+        font-size: var(--font-size-xs);
+        font-weight: 700;
+        letter-spacing: 0.01em;
+        padding: 3px var(--space-sm);
+        border-radius: var(--radius-sm);
+        color: var(--color-cyan-500);
+        background-color: rgba(0, 134, 187, 0.08);
+        border: var(--stroke-sm) solid rgba(0, 134, 187, 0.25);
+      }
     }
   }
 }
