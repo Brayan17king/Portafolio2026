@@ -7,6 +7,8 @@ import { t } from "../../../i18n/utils/translate";
 import { locale } from "../../../i18n/store";
 import { LOCALE_DEFAULT } from "../../../i18n/constants";
 import { experience } from "../../../content/experience";
+import { TECH_ICONS } from "../../../utils/techIcons";
+import TechIcon from "../../../components/icons/TechIcon.vue";
 
 const currentLocale = computed(() => locale.value ?? LOCALE_DEFAULT);
 
@@ -97,7 +99,15 @@ onUnmounted(() => {
             </div>
             <p class="experience-item-description">{{ item.description }}</p>
             <ul class="experience-item-stack" v-if="item.stack.length">
-              <li class="experience-item-stack-tag" v-for="tech in item.stack" :key="tech">{{ tech }}</li>
+              <li
+                class="experience-item-stack-tag"
+                v-for="tech in item.stack"
+                :key="tech.name"
+                :style="{ '--tech-color': `#${TECH_ICONS[tech.icon]?.hex ?? '5f5646'}` }"
+              >
+                <TechIcon :name="tech.icon" :size="13" />
+                {{ tech.name }}
+              </li>
             </ul>
           </div>
         </div>
@@ -315,14 +325,17 @@ onUnmounted(() => {
       list-style: none;
 
       &-tag {
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
         font-size: var(--font-size-xs);
         font-weight: 700;
         letter-spacing: 0.01em;
         padding: 3px var(--space-sm);
         border-radius: var(--radius-sm);
-        color: var(--color-cyan-500);
-        background-color: rgba(0, 134, 187, 0.08);
-        border: var(--stroke-sm) solid rgba(0, 134, 187, 0.25);
+        color: var(--tech-color);
+        background-color: color-mix(in srgb, var(--tech-color) 10%, var(--color-beige-400));
+        border: var(--stroke-sm) solid color-mix(in srgb, var(--tech-color) 35%, transparent);
       }
     }
   }

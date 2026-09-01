@@ -18,9 +18,9 @@ export interface ExperienceEntry {
   logoTone: "light" | "dark";
   period: LocalizedText;
   description: LocalizedText;
-  // Languages/technologies used in the role, rendered as separate badges —
-  // tech names don't need translation, so this stays a flat string list.
-  stack: string[];
+  // Languages/technologies used in the role, rendered as separate badges in
+  // each tech's own brand color. `icon` keys into TECH_ICONS (src/utils/techIcons.ts).
+  stack: { name: string; icon: string }[];
   // "project" marks training/academic work (e.g. a bootcamp project) rather
   // than a paid role, so it can be tagged differently in the UI.
   type: "job" | "project";
@@ -41,7 +41,12 @@ export const experience: ExperienceEntry[] = [
       es: "Desarrollo Full Stack de aplicaciones web y móviles para una consultora de soluciones digitales, cubriendo diseño de interfaz y funcionalidades de principio a fin.",
       en: "Full stack development of web and mobile applications for a digital solutions consultancy, covering interface design and functionality end to end.",
     },
-    stack: ["Vue", "TypeScript", ".NET Core", "Flutter"],
+    stack: [
+      { name: "Vue", icon: "vuedotjs" },
+      { name: "TypeScript", icon: "typescript" },
+      { name: ".NET Core", icon: "dotnet" },
+      { name: "Flutter", icon: "flutter" },
+    ],
     type: "job",
     current: true,
   },
@@ -56,7 +61,12 @@ export const experience: ExperienceEntry[] = [
       es: "Desarrollo y mantenimiento de sistemas para una empresa especializada en software de facturación electrónica, incluyendo un ERP contable construido con ASP.NET WebForms.",
       en: "Development and maintenance of systems for a company specialized in electronic invoicing software, including an accounting ERP built with ASP.NET WebForms.",
     },
-    stack: ["C#", ".NET", "ASP.NET WebForms", "SQL Server"],
+    stack: [
+      { name: "C#", icon: "csharp" },
+      { name: ".NET", icon: "dotnet" },
+      { name: "ASP.NET WebForms", icon: "dotnet" },
+      { name: "SQL Server", icon: "sqlserver" },
+    ],
     type: "job",
     current: false,
   },
@@ -71,7 +81,14 @@ export const experience: ExperienceEntry[] = [
       es: "Dashboard administrativo para una empresa de jardinería, desarrollado como proyecto de formación en una fábrica de talento TI.",
       en: "Administrative dashboard for a gardening company, built as a training project at a tech talent bootcamp.",
     },
-    stack: [".NET", "HTML", "CSS", "JavaScript", "MySQL", "JWT"],
+    stack: [
+      { name: ".NET", icon: "dotnet" },
+      { name: "HTML", icon: "html5" },
+      { name: "CSS", icon: "css" },
+      { name: "JavaScript", icon: "javascript" },
+      { name: "MySQL", icon: "mysql" },
+      { name: "JWT", icon: "jsonwebtokens" },
+    ],
     type: "project",
     current: false,
   },
