@@ -12,13 +12,14 @@ const handleLinkClick = (link: string) => {
   lenis.value.scrollTo(link);
 };
 
-type ActiveLink = "about" | "hobbies" | "projects" | "contact";
+type ActiveLink = "about" | "hobbies" | "projects" | "experience" | "contact";
 const activeLink = ref<ActiveLink | null>(null);
-const sections: ActiveLink[] = ["about", "projects", "hobbies", "contact"];
+const sections: ActiveLink[] = ["about", "projects", "experience", "hobbies", "contact"];
 const labels = computed<Record<ActiveLink, string>>(() => ({
   about: t("developer"),
   hobbies: t("about"),
   projects: t("projects"),
+  experience: t("experience"),
   contact: t("contact"),
 }));
 
