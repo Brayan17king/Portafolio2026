@@ -19,6 +19,6 @@ const icon = computed(() => TECH_ICONS[normalizedName.value]);
     xmlns="http://www.w3.org/2000/svg"
     aria-hidden="true"
   >
-    <path v-if="icon" :fill="`#${icon.hex}`" :d="icon.path" />
+    <path v-for="(p, index) in icon?.paths ?? []" :key="index" :fill="p.fill" :d="p.d" />
   </svg>
 </template>

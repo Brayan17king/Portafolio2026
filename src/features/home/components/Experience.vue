@@ -103,9 +103,9 @@ onUnmounted(() => {
                 class="experience-item-stack-tag"
                 v-for="tech in item.stack"
                 :key="tech.name"
-                :style="{ '--tech-color': `#${TECH_ICONS[tech.icon]?.hex ?? '5f5646'}` }"
+                :style="{ '--tech-color': `#${(tech.icon && TECH_ICONS[tech.icon]?.hex) || tech.hex || '5f5646'}` }"
               >
-                <TechIcon :name="tech.icon" :size="13" />
+                <TechIcon v-if="tech.icon" :name="tech.icon" :size="13" />
                 {{ tech.name }}
               </li>
             </ul>
